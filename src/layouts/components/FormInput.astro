@@ -1,0 +1,13 @@
+---
+const { name, required, type } = Astro.props;
+---
+
+<label class="mb-2 block" for=`${name}`
+  >{name} {required && <span class="text-red-600">*</span>}
+</label>
+<input
+  class="form-input w-full"
+  name=`${name}`
+  type=`${type}`
+  {required && required}
+/>
