@@ -6,6 +6,7 @@ import FormTextArea from "@layouts/components/FormTextArea.astro";
 import { markdownify } from "@lib/utils/textConverter";
 import { getEntry } from "astro:content";
 import { FaAddressCard, FaEnvelope, FaPhoneAlt } from "react-icons/fa/index.js";
+import { Image } from "@astrojs/image/components";
 
 const entry = await getEntry("pages", "contact");
 const { contact_form_action } = config.params;
@@ -22,8 +23,23 @@ const { title, description, meta_title, image } = entry.data;
   <section class="section">
     <div class="container">
       <h1 set:html={markdownify(title)} class="h2 page-heading" />
-      <div class="row gy-5 md:gx-5">
-        <div class="sm:col-5 md:col-4">
+      <article class="row gy-5 md:gx-5">
+        <aside class="sm:col-5 md:col-4">
+          {
+            image && (
+              <div class="img-cover mb-6">
+                <Image
+                  src={image}
+                  width={295}
+                  height={200}
+                  alt={title}
+                  class="w-full rounded-lg"
+                />
+              </div>
+            )
+          }
+        </aside>
+        <!-- <aside class="sm:col-5 md:col-4">
           <p class="mb-8 text-2xl font-bold text-theme-dark">Contact Info</p>
           <ul class="flex flex-col space-y-8">
             <li>
@@ -51,8 +67,8 @@ const { title, description, meta_title, image } = entry.data;
               <p set:html={markdownify(phone)} class="mt-2 pl-8 leading-5" />
             </li>
           </ul>
-        </div>
-        <div class="sm:col-7 md:col-8">
+        </aside> -->
+        <section class="sm:col-7 md:col-8">
           <form
             class="contact-form row gy-2 justify-center"
             method="POST"
@@ -74,8 +90,8 @@ const { title, description, meta_title, image } = entry.data;
               <button class="btn btn-primary mt-2">Submit Now</button>
             </div>
           </form>
-        </div>
-      </div>
+        </section>
+      </article>
     </div>
   </section>
 </Base>
