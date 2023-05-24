@@ -1,0 +1,28 @@
+---
+// import Logo from "@components/Logo.astro";
+import NavbarToggle from "@components/navbar/NavbarToggler.astro";
+import NavbarMenu from "@components/navbar/NavbarMenu.astro";
+import { IoSearch } from "react-icons/io5/index.js";
+
+import config from "@config/config.json";
+
+const { logo, logo_text, title } = config.site;
+---
+
+<nav class="navbar header container pt-6">
+  <a href="/" class="navbar-brand order-0 block">
+    {logo ? <img src={logo} alt={title} /> : logo_text ? logo_text : title}
+  </a>
+
+  <NavbarToggle />
+  <NavbarMenu />
+
+  <a
+    class="order-1 ml-auto mr-4 inline-block flex cursor-pointer p-2 text-xl text-dark transition hover:text-primary md:order-2 md:ml-0 md:mr-0"
+    href="search"
+    title="search"
+    aria-label="search"
+  >
+    <IoSearch />
+  </a>
+</nav>

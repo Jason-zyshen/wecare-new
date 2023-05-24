@@ -1,0 +1,8 @@
+---
+import config from "@config/config.json";
+const { logo, logo_text, title } = config.site;
+---
+
+<a href="/" class="navbar-brand order-0 block">
+  {logo ? <img src={logo} alt={title} /> : logo_text ? logo_text : title}
+</a>

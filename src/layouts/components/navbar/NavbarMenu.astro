@@ -1,0 +1,39 @@
+---
+import menu from "@config/menu.json";
+import IconExpand from "@components/navbar/IconExpand.astro";
+---
+
+<ul
+  id="nav-menu"
+  class="navbar-nav order-3 hidden w-full md:order-1 md:flex md:w-auto"
+>
+  {
+    menu.header.map((menu) => (
+      <>
+        {menu.hasChildren ? (
+          <li class="nav-item nav-dropdown group relative cursor-pointer">
+            <span class="nav-link inline-flex items-center">
+              {menu.name}
+              <IconExpand />
+            </span>
+            <ul class="nav-dropdown-list hidden group-hover:block md:invisible md:absolute md:block md:opacity-0 md:group-hover:visible md:group-hover:opacity-100">
+              {menu.children?.map((child) => (
+                <li class="nav-dropdown-item">
+                  <a href={child.url} class="nav-dropdown-link">
+                    {child.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ) : (
+          <li class="nav-item">
+            <a href={menu.url} class="nav-link block">
+              {menu.name}
+            </a>
+          </li>
+        )}
+      </>
+    ))
+  }
+</ul>

@@ -1,6 +1,8 @@
 ---
 const { source, className } = Astro.props;
 
+import social from "@config/social.json";
+
 import {
   IoCall,
   IoGlobeOutline,
@@ -67,10 +69,10 @@ const {
   address,
   skype,
   website,
-} = source;
+} = social;
 ---
 
-<ul class={className}>
+<ul class="social-icons mb-8">
   {
     facebook && (
       <li class="inline-block">

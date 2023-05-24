@@ -1,8 +1,8 @@
 ---
 import config from "@config/config.json";
 import Base from "@layouts/Base.astro";
-import FormInput from "@layouts/components/FormInput.astro";
-import FormTextArea from "@layouts/components/FormTextArea.astro";
+import FormInput from "@layouts/components/form/FormInput.astro";
+import FormTextArea from "@layouts/components/form/FormTextArea.astro";
 import { markdownify } from "@lib/utils/textConverter";
 import { getEntry } from "astro:content";
 import { FaAddressCard, FaEnvelope, FaPhoneAlt } from "react-icons/fa/index.js";
@@ -21,77 +21,33 @@ const { title, description, meta_title, image } = entry.data;
   image={image}
 >
   <section class="section">
-    <div class="container">
-      <h1 set:html={markdownify(title)} class="h2 page-heading" />
-      <article class="row gy-5 md:gx-5">
-        <aside class="sm:col-5 md:col-4">
-          {
-            image && (
-              <div class="img-cover mb-6">
-                <Image
-                  src={image}
-                  width={295}
-                  height={200}
-                  alt={title}
-                  class="w-full rounded-lg"
-                />
-              </div>
-            )
-          }
-        </aside>
-        <!-- <aside class="sm:col-5 md:col-4">
-          <p class="mb-8 text-2xl font-bold text-theme-dark">Contact Info</p>
-          <ul class="flex flex-col space-y-8">
-            <li>
-              <div class="flex items-center text-xl text-theme-dark">
-                <FaAddressCard className="mr-3 text-primary" />
-                <p class="font-semibold">Address</p>
-              </div>
-              <p set:html={markdownify(address)} class="mt-2 pl-8 leading-5" />
-            </li>
-            <li>
-              <div class="flex items-center text-xl text-theme-dark">
-                <FaEnvelope className="mr-3 text-primary" />
-                <p class="font-semibold">Email</p>
-              </div>
-              <p
-                set:html={markdownify(email)}
-                class="content mt-2 pl-8 leading-5"
-              />
-            </li>
-            <li>
-              <div class="flex items-center text-xl text-theme-dark">
-                <FaPhoneAlt className="mr-3 text-primary" />
-                <p class="font-semibold">Phone</p>
-              </div>
-              <p set:html={markdownify(phone)} class="mt-2 pl-8 leading-5" />
-            </li>
-          </ul>
-        </aside> -->
-        <section class="sm:col-7 md:col-8">
-          <form
-            class="contact-form row gy-2 justify-center"
-            method="POST"
-            action={contact_form_action}
-          >
-            <div class="lg:col-6">
-              <FormInput name="Name" required />
-            </div>
-            <div class="lg:col-6">
-              <FormInput name="Email" type="email" required />
-            </div>
-            <div class="col-12">
-              <FormInput name="Password" type="password" required />
-            </div>
-            <div class="col-12">
-              <FormTextArea name="Message" rows="4" />
-            </div>
-            <div class="col-12">
-              <button class="btn btn-primary mt-2">Submit Now</button>
-            </div>
-          </form>
-        </section>
-      </article>
-    </div>
+    <h1 set:html={markdownify(title)} class="h2 page-heading" />
+    <article class="row gy-5 md:gx-5">
+      <aside class="sm:col-5 md:col-4">
+        <img src={image} alt={title} class="img-cover mb-6 w-full rounded-lg" />
+      </aside>
+
+      <form
+        class="contact-form row gy-2 justify-center sm:col-7 md:col-8"
+        method="POST"
+        action={contact_form_action}
+      >
+        <div class="lg:col-6">
+          <FormInput name="Name" required />
+        </div>
+        <div class="lg:col-6">
+          <FormInput name="Email" type="email" required />
+        </div>
+        <div class="col-12">
+          <FormInput name="Password" type="password" required />
+        </div>
+        <div class="col-12">
+          <FormTextArea name="Message" rows="4" />
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary mt-2">Submit Now</button>
+        </div>
+      </form>
+    </article>
   </section>
 </Base>

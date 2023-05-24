@@ -4,7 +4,7 @@ meta_title: "Home"
 image: "/images/hero.png"
 draft: false
 
-what_i_do:
+details:
   title: "Features"
   items:
   - title: Intelligent Event Planning

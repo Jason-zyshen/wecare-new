@@ -8,7 +8,7 @@
     "logo": "/images/logo.png",
     "logo_width": "400",
     "logo_height": "100",
-    "logo_text": "Logo"
+    "logo_text": ""
   },
   "settings": {
     "pagination": 5,
