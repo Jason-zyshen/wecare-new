@@ -5,8 +5,6 @@ import FormInput from "@layouts/components/form/FormInput.astro";
 import FormTextArea from "@layouts/components/form/FormTextArea.astro";
 import { markdownify } from "@lib/utils/textConverter";
 import { getEntry } from "astro:content";
-import { FaAddressCard, FaEnvelope, FaPhoneAlt } from "react-icons/fa/index.js";
-import { Image } from "@astrojs/image/components";
 
 const entry = await getEntry("pages", "contact");
 const { contact_form_action } = config.params;
