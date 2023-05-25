@@ -30,20 +30,19 @@ const { title, description, meta_title, image } = entry.data;
       <form
         class="contact-form row gy-2 justify-center sm:col-7 md:col-8"
         method="POST"
-        action={contact_form_action}
+        data-netlify="true"
       >
-        <div class="lg:col-6">
-          <FormInput name="Name" required />
-        </div>
-        <div class="lg:col-6">
-          <FormInput name="Email" type="email" required />
-        </div>
-        <div class="col-12">
-          <FormInput name="Password" type="password" required />
-        </div>
-        <div class="col-12">
-          <FormTextArea name="Message" rows="4" />
-        </div>
+        <FormInput name="Name" required className="lg:col-6" />
+        <FormInput name="Email" type="email" required className="lg:col-6" />
+
+        <FormInput
+          name="Password"
+          type="password"
+          required
+          className="lg:col-12"
+        />
+
+        <FormTextArea name="Message" rows="4" className="lg:col-12" />
         <div class="col-12">
           <button class="btn btn-primary mt-2">Submit Now</button>
         </div>

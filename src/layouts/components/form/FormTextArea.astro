@@ -1,9 +1,11 @@
 ---
-const { name, required, rows } = Astro.props;
+const { name, required, rows, className } = Astro.props;
 ---
 
-<label class="mb-2 block" for={name}
-  >{name} {required && <span class="text-red-600">*</span>}
-</label>
-<textarea class="form-textarea w-full" rows={rows} {required && required}
-></textarea>
+<div class={className}>
+  <label class="mb-2 block" for={name}
+    >{name} {required && <span class="text-red-600">*</span>}
+  </label>
+  <textarea class="form-textarea w-full" rows={rows} {required && required}
+  ></textarea>
+</div>
