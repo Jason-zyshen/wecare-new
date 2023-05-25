@@ -3,7 +3,7 @@ const { name, required, type, className } = Astro.props;
 ---
 
 <div class={className}>
-  <label class="mb-2 block" for={name}
+  <label class="inv mb-2 block" for={name}
     >{name} {required && <span class="text-red-600">*</span>}
   </label>
   <input
